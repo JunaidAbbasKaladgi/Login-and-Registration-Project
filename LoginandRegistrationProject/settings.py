@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'EcommerceApp',
+    'LoginandRegistrationApp',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'EcommerceProject.urls'
+ROOT_URLCONF = 'LoginandRegistrationProject.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'EcommerceProject.wsgi.application'
+WSGI_APPLICATION = 'LoginandRegistrationProject.wsgi.application'
 
 
 # Database

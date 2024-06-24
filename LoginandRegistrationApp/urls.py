@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from EcommerceApp import views
+from LoginandRegistrationApp import views
 
 urlpatterns = [
     path('',views.Signuppage,name='signup'),
