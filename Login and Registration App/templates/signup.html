@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style>
+     body{
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeH_6nQCd_J19wtnzWL3gXvAciVGUigpoBsA&usqp=CAU');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup-form {
+      width: 100%;
+      max-width: 400px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-form">
+    <form id="signupForm" method="post" class="border p-4 rounded bg-light">
+      {% csrf_token %}
+      <div class="form-group text-center">
+        <h2>Sign Up</h2>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="uname" id="username" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+      <a href="{% url 'login' %}" class="d-block mt-3">Already have an account? Login</a>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password1 = document.getElementById('password1').value;
+      const password2 = document.getElementById('password2').value;
+
+      if (!username || !email || !password1 || !password2) {
+        alert("All fields are required.");
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        alert("Invalid email address.");
+        return;
+      }
+
+      if (password1 !== password2) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      this.submit();
+    });
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRtvbGQu2gYyRw2AXTq" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBkIsb4k+G7tkOH6Cfro3yD/yK7/rVyo+K4cU32E8j" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
